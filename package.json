@@ -1,0 +1,13 @@
+{
+  "name": "ok-shuttumani",
+  "version": "1.0.0",
+  "description": "A cute sunset voxel friendship arcade browser game made as a birthday gift for Posh by Iba.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["game", "voxel", "birthday", "arcade", "canvas"],
+  "author": "Iba",
+  "license": "MIT"
+}

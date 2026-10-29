@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#ff9671">
+  <meta name="description" content="OK Shuttumani — A cute voxel friendship arcade game made as a birthday gift for Posh by Iba.">
+  <title>OK Shuttumani</title>
+  
+  <!-- Modern Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app-container">
+    
+    <!-- TOP HUD (Active during gameplay) -->
+    <header id="hud">
+      <div class="hud-top-bar">
+        <h1 class="hud-title">OK Shuttumani</h1>
+        <div id="hud-timer" class="hud-timer-badge">40s</div>
+        <div class="hud-controls-group">
+          <button id="btn-sound-toggle-hud" class="btn-icon-round btn-sound-toggle" aria-label="Toggle Sound">🔊</button>
+          <button id="btn-pause" class="btn-icon-round" aria-label="Pause Game">⏸</button>
+        </div>
+      </div>
+
+      <!-- Two clearly labelled score displays and progress meters -->
+      <div class="hud-scores-row">
+        <!-- Posh's Score (Pink Hearts / Iba's love) -->
+        <div class="hud-score-card">
+          <div class="score-meta">
+            <span class="score-name posh-name">💖 Posh</span>
+            <span id="hud-score-posh" class="score-number">0</span>
+          </div>
+          <div class="progress-track">
+            <div id="hud-meter-posh" class="progress-bar-posh"></div>
+          </div>
+        </div>
+
+        <!-- Iba's Score (Purple Hearts / Posh's love) -->
+        <div class="hud-score-card">
+          <div class="score-meta">
+            <span class="score-name iba-name">💜 Iba</span>
+            <span id="hud-score-iba" class="score-number">0</span>
+          </div>
+          <div class="progress-track">
+            <div id="hud-meter-iba" class="progress-bar-iba"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN GAME CANVAS WRAPPER -->
+    <div id="canvas-wrap">
+      <canvas id="game-canvas" width="400" height="520"></canvas>
+    </div>
+
+    <!-- BOTTOM CONTROLS: Large Thumb-friendly Virtual Joystick -->
+    <footer id="bottom-controls">
+      <div id="joystick-zone">
+        <div id="joystick-base"></div>
+        <div id="joystick-knob"></div>
+      </div>
+    </footer>
+
+    <!-- SCREEN 1: MAIN DASHBOARD -->
+    <section id="screen-dashboard" class="screen-overlay">
+      <div class="dashboard-center">
+        <div class="dashboard-header">
+          <h1 class="game-title">OK Shuttumani</h1>
+          <p class="game-subtitle">A video game attempt made just for Posh hehehe :3</p>
+        </div>
+
+        <div class="dashboard-avatar-box">
+          <p class="dashboard-instructions">Control <span class="highlight-purple">Posh</span> to collect pink hearts of Iba's love!<br><br>Sadly for now , a bot will be playing for <span class="highlight-pink">Iba</span> which aims to collect purple hearts. WIll improve it soon ahhhh<br><br>Meet at the golden heart for <span class="highlight-gold">Bestie Sync!</span> ⭐</p>
+        </div>
+
+        <div class="dashboard-actions">
+          <button id="btn-dashboard-play" class="btn-primary">PLAY</button>
+          <button id="btn-sound-toggle-dash" class="btn-icon-round btn-sound-toggle" aria-label="Toggle Sound">🔊</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: RESULTS SCREEN -->
+    <section id="screen-results" class="screen-overlay hidden">
+      <div class="results-card">
+        <div class="results-badge">🏆</div>
+        <h2 id="results-title">GAME OVER</h2>
+        <div id="results-score-summary"></div>
+        <p id="results-message"></p>
+
+        <button id="btn-open-letter" class="btn-primary">Open Birthday Letter 💌</button>
+        <button id="btn-results-play-again" class="btn-secondary">PLAY AGAIN</button>
+        <button id="btn-results-dashboard" class="btn-secondary">DASHBOARD</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: BIRTHDAY LETTER & VOXEL ENVELOPE OPENING -->
+    <section id="screen-letter" class="screen-overlay hidden">
+      <!-- 5-Second Envelope Opening Sequence -->
+      <div id="envelope-container">
+        <div class="envelope-voxel">
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal">💌</div>
+        </div>
+        <div class="envelope-status-text">Opening Iba's letter for Posh...</div>
+      </div>
+
+      <!-- Birthday Letter (Stays open until Posh leaves) -->
+      <article id="letter-paper" class="hidden">
+        <div id="letter-content"></div>
+        <div class="letter-button-row">
+          <button id="btn-letter-play-again" class="btn-letter btn-letter-play">PLAY AGAIN</button>
+          <button id="btn-letter-dashboard" class="btn-letter btn-letter-dash">DASHBOARD</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- PAUSE MODAL -->
+    <div id="modal-pause" class="screen-overlay hidden">
+      <div class="pause-dialog">
+        <h2 class="pause-title">PAUSED</h2>
+        <button id="btn-resume" class="btn-primary">RESUME</button>
+        <button id="btn-pause-quit" class="btn-secondary">DASHBOARD</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- GAME BOOTSTRAP SCRIPT -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
